@@ -6,8 +6,12 @@
 		},
 		{
 			"path": "backend",
-			"name": "backend"
-		}
+			"name": "dotnet-backend"
+		},
+		{
+			"path": "frontend",
+			"name": "react-frontend"
+		},
 	],
 	"settings": {}
 }
