@@ -9,18 +9,26 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "@fluentui/react-components": "^9.1.1",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-router-dom": "^6.3.0"
   },
   "devDependencies": {
-    "@types/react": "^18.0.15",
-    "@types/react-dom": "^18.0.6",
+    "@babel/core": "^7.18.9",
+    "@types/node": "^18.6.1",
+    "@types/react": "17.0.2",
+    "@types/react-dom": "17.0.2",
     "@typescript-eslint/eslint-plugin": "^5.30.7",
     "@typescript-eslint/parser": "^5.30.7",
     "@vitejs/plugin-react": "^2.0.0",
     "eslint": "^8.20.0",
+    "eslint-config-kentcdodds": "^20.3.1",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-react": "^7.30.1",
     "prettier": "^2.7.1",
+    "scheduler": "^0.20.0",
     "typescript": "^4.6.4",
     "vite": "^3.0.0"
   }

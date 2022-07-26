@@ -1,9 +1,21 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
-import { App } from "./App";
+import ReactDOM from "react-dom";
+import { AppProvider } from "./providers";
+import { AppRoutes } from "./routes";
 
-ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+ReactDOM.render(
 	<React.StrictMode>
-		<App />
-	</React.StrictMode>
+		<AppProvider>
+			<AppRoutes />
+		</AppProvider>
+	</React.StrictMode>,
+	document.getElementById("root") as HTMLElement
 );
+
+// ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+// 	<React.StrictMode>
+// 		<AppProvider>
+// 			<AppRoutes />
+// 		</AppProvider>
+// 	</React.StrictMode>
+// );
