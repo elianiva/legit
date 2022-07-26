@@ -15,6 +15,18 @@ export function AppRoutes() {
 					element: <DashboardRoutes />,
 				},
 				{
+					path: "activity/*",
+					element: <h1>Activity</h1>,
+				},
+				{
+					path: "authors/*",
+					element: <h1>Authors</h1>,
+				},
+				{
+					path: "files/*",
+					element: <h1>Files</h1>,
+				},
+				{
 					path: "*",
 					element: <Navigate to="/dashboard" />,
 				},
