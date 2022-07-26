@@ -1,4 +1,5 @@
 import { Spinner } from "@fluentui/react-components";
+import { useQueryErrorResetBoundary } from "@tanstack/react-query";
 import { PropsWithChildren, Suspense } from "react";
 import { ErrorBoundary, type ErrorBoundaryProps } from "react-error-boundary";
 import { ErrorFallback } from "./ErrorFallback";
@@ -16,8 +17,13 @@ function PendingFallback() {
 }
 
 export function SuspenseBoundary({ children, resetKeys }: PropsWithChildren<SuspenseBoundaryProps>) {
+	const { reset } = useQueryErrorResetBoundary();
 	return (
-		<ErrorBoundary fallbackRender={ErrorFallback} onReset={() => void 0 /* TODO */} resetKeys={resetKeys}>
+		<ErrorBoundary
+			fallbackRender={(props) => <ErrorFallback {...props} />}
+			onReset={() => reset()}
+			resetKeys={resetKeys}
+		>
 			<Suspense fallback={<PendingFallback />}>{children}</Suspense>
 		</ErrorBoundary>
 	);
