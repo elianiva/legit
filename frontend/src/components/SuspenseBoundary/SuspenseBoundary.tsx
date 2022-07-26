@@ -1,4 +1,4 @@
-import { Spinner, SpinnerSize, Stack } from "@fluentui/react";
+import { Flex, Spinner } from "@chakra-ui/react";
 import { useQueryErrorResetBoundary } from "@tanstack/react-query";
 import { PropsWithChildren, Suspense } from "react";
 import { ErrorBoundary, type ErrorBoundaryProps } from "react-error-boundary";
@@ -8,9 +8,9 @@ type SuspenseBoundaryProps = Pick<ErrorBoundaryProps, "resetKeys">;
 
 function PendingFallback() {
 	return (
-		<Stack horizontalAlign="center" verticalAlign="center">
-			<Spinner size={SpinnerSize.medium} />
-		</Stack>
+		<Flex align="center" h="full" justify="center" w="full">
+			<Spinner size="lg" />
+		</Flex>
 	);
 }
 

@@ -1,6 +1,6 @@
-import type { INavLinkGroup } from "@fluentui/react";
+// import type { INavLinkGroup } from "@fluentui/react";
 
-export const navLinkGroups: INavLinkGroup[] = [
+export const navLinkGroups = [
 	{
 		links: [
 			{

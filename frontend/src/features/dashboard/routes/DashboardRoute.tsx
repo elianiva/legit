@@ -1,15 +1,9 @@
-import { IStackStyles, Stack, Text } from "@fluentui/react";
-
-const containerStyles: Partial<IStackStyles> = {
-	root: {
-		width: "100%",
-	},
-};
+import { Stack, Text } from "@chakra-ui/react";
 
 export function DashboardRoute() {
 	return (
-		<Stack horizontalAlign="center" styles={containerStyles} verticalAlign="center">
-			<Text>Hello World!</Text>
+		<Stack align="center" justify="center">
+			<Text>Hello World</Text>
 		</Stack>
 	);
 }
