@@ -1,16 +1,12 @@
-import { Text, Button } from "@fluentui/react-components";
+import { Text, DefaultButton, Stack } from "@fluentui/react";
 import type { FallbackProps } from "react-error-boundary";
-import { useStyles } from "./styles";
 
 export function ErrorFallback({ resetErrorBoundary, error }: FallbackProps) {
-	const styles = useStyles();
 	return (
-		<div className={styles.container}>
-			<Text size={400} weight="semibold">
-				There was an error.
-			</Text>
+		<Stack horizontalAlign="center" verticalAlign="center">
+			<Text variant="large">There was an error.</Text>
 			<Text>{error.message}</Text>
-			<Button onClick={() => resetErrorBoundary()}>Try Again</Button>
-		</div>
+			<DefaultButton onClick={() => resetErrorBoundary()}>Try Again</DefaultButton>
+		</Stack>
 	);
 }

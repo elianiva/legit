@@ -1,26 +1,15 @@
-import { Button, makeStyles, Text, tokens } from "@fluentui/react-components";
-import { useHelloWorld } from "../services/hello";
+import { IStackStyles, Stack, Text } from "@fluentui/react";
 
-const useStyles = makeStyles({
-	container: {
-		display: "flex",
-		flexDirection: "column",
-		alignItems: "center",
-		justifyContent: "center",
+const containerStyles: Partial<IStackStyles> = {
+	root: {
 		width: "100%",
-		height: "100%",
-		rowGap: tokens.spacingVerticalL,
 	},
-});
+};
 
 export function DashboardRoute() {
-	const styles = useStyles();
-	const { data: helloWorld, refetch } = useHelloWorld();
-
 	return (
-		<div className={styles.container}>
-			<Text>{helloWorld}</Text>
-			<Button onClick={() => refetch()}>Refresh</Button>
-		</div>
+		<Stack horizontalAlign="center" styles={containerStyles} verticalAlign="center">
+			<Text>Hello World!</Text>
+		</Stack>
 	);
 }

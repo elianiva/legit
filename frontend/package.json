@@ -12,7 +12,8 @@
 		"@types/react": "^17.0.0"
 	},
 	"dependencies": {
-		"@fluentui/react-components": "^9.1.1",
+		"@fluentui/font-icons-mdl2": "^8.4.3",
+		"@fluentui/react": "^8.83.1",
 		"@tanstack/react-query": "^4.0.10",
 		"@tanstack/react-query-devtools": "^4.0.10",
 		"react": "^17.0.2",
