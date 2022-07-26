@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { AppProvider } from "./providers";
 import { AppRoutes } from "./routes";
+import "./main.css";
 
 ReactDOM.render(
 	<React.StrictMode>

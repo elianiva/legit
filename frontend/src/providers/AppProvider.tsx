@@ -1,13 +1,33 @@
-import { type PropsWithChildren, Suspense } from "react";
+import type { PropsWithChildren } from "react";
 import { BrowserRouter } from "react-router-dom";
-import { FluentProvider, webLightTheme } from "@fluentui/react-components";
+import { FluentProvider, makeStyles, webLightTheme } from "@fluentui/react-components";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { SuspenseBoundary } from "~/components/SuspenseBoundary";
+
+const queryClient = new QueryClient({
+	defaultOptions: {
+		queries: {
+			suspense: true,
+			useErrorBoundary: true,
+		},
+	},
+});
+
+const useStyles = makeStyles({
+	app: {
+		height: "100%",
+	},
+});
 
 export function AppProvider(props: PropsWithChildren<{}>) {
+	const styles = useStyles();
 	return (
-		<FluentProvider theme={webLightTheme}>
-			<Suspense fallback="Loading">
-				<BrowserRouter>{props.children}</BrowserRouter>
-			</Suspense>
+		<FluentProvider className={styles.app} theme={webLightTheme}>
+			<QueryClientProvider client={queryClient}>
+				<SuspenseBoundary>
+					<BrowserRouter>{props.children}</BrowserRouter>
+				</SuspenseBoundary>
+			</QueryClientProvider>
 		</FluentProvider>
 	);
 }

@@ -13,5 +13,7 @@
 			"name": "react-frontend"
 		},
 	],
-	"settings": {}
+	"settings": {
+		"typescript.tsdk": "react-frontend/node_modules/typescript/lib"
+	}
 }
