@@ -26,6 +26,8 @@
 	},
 	"devDependencies": {
 		"@babel/core": "^7.18.9",
+		"@iconify-json/fluent": "^1.1.14",
+		"@svgr/core": "^6.3.1",
 		"@types/node": "^18.6.1",
 		"@types/react": "^18",
 		"@types/react-dom": "^18",
@@ -40,6 +42,7 @@
 		"prettier": "^2.7.1",
 		"scheduler": "^0.20.0",
 		"typescript": "^4.6.4",
+		"unplugin-icons": "^0.14.7",
 		"vite": "^3.0.0"
 	}
 }

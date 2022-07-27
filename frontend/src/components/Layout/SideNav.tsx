@@ -1,4 +1,4 @@
-import { Box, Flex, Stack, Text } from "@chakra-ui/react";
+import { Box, HStack, Icon, Stack, Text } from "@chakra-ui/react";
 import { Link, useLocation } from "react-router-dom";
 import { navLinkGroups as navLinkItems } from "./nav-data";
 
@@ -11,11 +11,11 @@ export function SideNav() {
 				<span>Legit</span>
 				<span>teknologi-umum/blog</span>
 			</Stack>
-			<Stack h="full" spacing={2} w="full">
+			<Stack h="full" spacing={4} w="full">
 				{navLinkItems.map((item) => {
 					const isActive = location.pathname === item.url;
 					return (
-						<Flex
+						<HStack
 							key={item.url}
 							_hover={{
 								bgGradient: "linear(to-r, blackAlpha.50, transparent)",
@@ -24,10 +24,10 @@ export function SideNav() {
 							as={Link}
 							color="black"
 							cursor="pointer"
-							gap={4}
 							position="relative"
 							px={6}
 							py={3}
+							spacing={2}
 							sx={{
 								"&::before": {
 									content: '""',
@@ -46,13 +46,14 @@ export function SideNav() {
 							}}
 							to={item.url}
 						>
+							<Icon as={item.icon} color={isActive ? "blue.500" : "gray.500"} />
 							<Text
-								color={isActive ? "gray.800" : "gray.500"}
+								color={isActive ? "blue.500" : "gray.500"}
 								fontWeight={isActive ? "semibold" : "normal"}
 							>
 								{item.name}
 							</Text>
-						</Flex>
+						</HStack>
 					);
 				})}
 			</Stack>

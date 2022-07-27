@@ -6,7 +6,7 @@ export function GlassCard(props: PropsWithChildren<BoxProps>) {
 		<Box
 			bgGradient="linear(to-br, whiteAlpha.800 60%, whiteAlpha.200)"
 			border="1px solid"
-			borderColor="gray.300"
+			borderColor="gray.200"
 			px={6}
 			py={4}
 			rounded="lg"
