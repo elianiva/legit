@@ -5,12 +5,11 @@ option csharp_namespace = "Legit.Protos.Overview";
 
 message GitOverviewResponse {
     string url = 1;
-    string name = 2;
-    int32 total_files = 3;
-    int32 total_commits = 4;
-    int32 total_authors = 5;
-    Age age = 6;
-    Lines lines = 7;
+    int32 total_files = 2;
+    int32 total_commits = 3;
+    int32 total_authors = 4;
+    Age age = 5;
+    Lines lines = 6;
 }
 
 message Age {

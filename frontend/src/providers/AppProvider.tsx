@@ -5,12 +5,18 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import { SuspenseBoundary } from "~/components/SuspenseBoundary";
 import { globalTheme } from "~/themes/global";
+import { http } from "~/utils/http";
 
 const queryClient = new QueryClient({
 	defaultOptions: {
 		queries: {
 			suspense: true,
 			useErrorBoundary: true,
+			queryFn: async (ctx) => {
+				const [url] = ctx.queryKey;
+				const response = await http.get(url as string);
+				return response.json();
+			},
 		},
 	},
 });

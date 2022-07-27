@@ -27,7 +27,6 @@ public class OverviewController : ControllerBase
         GitOverviewResponse overview = new GitOverviewResponse
         {
             Url = "https://github.com/teknologi-umum/blog.git",
-            Name = "teknologi-umum/blog",
             TotalFiles = 92,
             TotalCommits = 291,
             TotalAuthors = 28,

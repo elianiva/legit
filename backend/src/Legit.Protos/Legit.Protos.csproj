@@ -10,7 +10,7 @@
     <PackageReference Include="Google.Protobuf" Version="3.21.4" />
   </ItemGroup>
 
-  <Target Name="GenerateProto" Label="Build SQLite with ICU support">
+  <Target Name="GenerateProto" Label="Generate code from proto definition">
       <Exec WorkingDirectory="../../../proto" Command="protoc --csharp_out=../backend/src/Legit.Protos --csharp_opt=base_namespace=Legit.Protos *.proto" />
   </Target>
 

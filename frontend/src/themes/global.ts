@@ -1,5 +1,6 @@
 import type { StyleObjectOrFn } from "@chakra-ui/react";
 import { colours } from "./colour";
+import { components } from "./components";
 import { fonts } from "./font";
 
 export const globalTheme = {
@@ -28,6 +29,7 @@ export const globalTheme = {
 			} as StyleObjectOrFn,
 		},
 	},
+	components,
 	...colours,
 	...fonts,
 };

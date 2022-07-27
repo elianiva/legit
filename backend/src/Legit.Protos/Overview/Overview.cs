@@ -24,18 +24,18 @@ namespace Legit.Protos.Overview {
     static OverviewReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Cg5vdmVydmlldy5wcm90bxIFbGVnaXQiqQEKE0dpdE92ZXJ2aWV3UmVzcG9u",
-            "c2USCwoDdXJsGAEgASgJEgwKBG5hbWUYAiABKAkSEwoLdG90YWxfZmlsZXMY",
-            "AyABKAUSFQoNdG90YWxfY29tbWl0cxgEIAEoBRIVCg10b3RhbF9hdXRob3Jz",
-            "GAUgASgFEhcKA2FnZRgGIAEoCzIKLmxlZ2l0LkFnZRIbCgVsaW5lcxgHIAEo",
-            "CzIMLmxlZ2l0LkxpbmVzIkQKA0FnZRIMCgRkYXlzGAEgASgFEg0KBWhvdXJz",
-            "GAIgASgFEg8KB21pbnV0ZXMYAyABKAUSDwoHc2Vjb25kcxgEIAEoBSI2CgVM",
-            "aW5lcxINCgV0b3RhbBgBIAEoBRINCgVhZGRlZBgCIAEoBRIPCgdkZWxldGVk",
-            "GAMgASgFQhiqAhVMZWdpdC5Qcm90b3MuT3ZlcnZpZXdiBnByb3RvMw=="));
+            "Cg5vdmVydmlldy5wcm90bxIFbGVnaXQimwEKE0dpdE92ZXJ2aWV3UmVzcG9u",
+            "c2USCwoDdXJsGAEgASgJEhMKC3RvdGFsX2ZpbGVzGAIgASgFEhUKDXRvdGFs",
+            "X2NvbW1pdHMYAyABKAUSFQoNdG90YWxfYXV0aG9ycxgEIAEoBRIXCgNhZ2UY",
+            "BSABKAsyCi5sZWdpdC5BZ2USGwoFbGluZXMYBiABKAsyDC5sZWdpdC5MaW5l",
+            "cyJECgNBZ2USDAoEZGF5cxgBIAEoBRINCgVob3VycxgCIAEoBRIPCgdtaW51",
+            "dGVzGAMgASgFEg8KB3NlY29uZHMYBCABKAUiNgoFTGluZXMSDQoFdG90YWwY",
+            "ASABKAUSDQoFYWRkZWQYAiABKAUSDwoHZGVsZXRlZBgDIAEoBUIYqgIVTGVn",
+            "aXQuUHJvdG9zLk92ZXJ2aWV3YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Legit.Protos.Overview.GitOverviewResponse), global::Legit.Protos.Overview.GitOverviewResponse.Parser, new[]{ "Url", "Name", "TotalFiles", "TotalCommits", "TotalAuthors", "Age", "Lines" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Legit.Protos.Overview.GitOverviewResponse), global::Legit.Protos.Overview.GitOverviewResponse.Parser, new[]{ "Url", "TotalFiles", "TotalCommits", "TotalAuthors", "Age", "Lines" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Legit.Protos.Overview.Age), global::Legit.Protos.Overview.Age.Parser, new[]{ "Days", "Hours", "Minutes", "Seconds" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Legit.Protos.Overview.Lines), global::Legit.Protos.Overview.Lines.Parser, new[]{ "Total", "Added", "Deleted" }, null, null, null, null)
           }));
@@ -79,7 +79,6 @@ namespace Legit.Protos.Overview {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GitOverviewResponse(GitOverviewResponse other) : this() {
       url_ = other.url_;
-      name_ = other.name_;
       totalFiles_ = other.totalFiles_;
       totalCommits_ = other.totalCommits_;
       totalAuthors_ = other.totalAuthors_;
@@ -106,20 +105,8 @@ namespace Legit.Protos.Overview {
       }
     }
 
-    /// <summary>Field number for the "name" field.</summary>
-    public const int NameFieldNumber = 2;
-    private string name_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string Name {
-      get { return name_; }
-      set {
-        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
     /// <summary>Field number for the "total_files" field.</summary>
-    public const int TotalFilesFieldNumber = 3;
+    public const int TotalFilesFieldNumber = 2;
     private int totalFiles_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -131,7 +118,7 @@ namespace Legit.Protos.Overview {
     }
 
     /// <summary>Field number for the "total_commits" field.</summary>
-    public const int TotalCommitsFieldNumber = 4;
+    public const int TotalCommitsFieldNumber = 3;
     private int totalCommits_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -143,7 +130,7 @@ namespace Legit.Protos.Overview {
     }
 
     /// <summary>Field number for the "total_authors" field.</summary>
-    public const int TotalAuthorsFieldNumber = 5;
+    public const int TotalAuthorsFieldNumber = 4;
     private int totalAuthors_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -155,7 +142,7 @@ namespace Legit.Protos.Overview {
     }
 
     /// <summary>Field number for the "age" field.</summary>
-    public const int AgeFieldNumber = 6;
+    public const int AgeFieldNumber = 5;
     private global::Legit.Protos.Overview.Age age_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -167,7 +154,7 @@ namespace Legit.Protos.Overview {
     }
 
     /// <summary>Field number for the "lines" field.</summary>
-    public const int LinesFieldNumber = 7;
+    public const int LinesFieldNumber = 6;
     private global::Legit.Protos.Overview.Lines lines_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -194,7 +181,6 @@ namespace Legit.Protos.Overview {
         return true;
       }
       if (Url != other.Url) return false;
-      if (Name != other.Name) return false;
       if (TotalFiles != other.TotalFiles) return false;
       if (TotalCommits != other.TotalCommits) return false;
       if (TotalAuthors != other.TotalAuthors) return false;
@@ -208,7 +194,6 @@ namespace Legit.Protos.Overview {
     public override int GetHashCode() {
       int hash = 1;
       if (Url.Length != 0) hash ^= Url.GetHashCode();
-      if (Name.Length != 0) hash ^= Name.GetHashCode();
       if (TotalFiles != 0) hash ^= TotalFiles.GetHashCode();
       if (TotalCommits != 0) hash ^= TotalCommits.GetHashCode();
       if (TotalAuthors != 0) hash ^= TotalAuthors.GetHashCode();
@@ -236,28 +221,24 @@ namespace Legit.Protos.Overview {
         output.WriteRawTag(10);
         output.WriteString(Url);
       }
-      if (Name.Length != 0) {
-        output.WriteRawTag(18);
-        output.WriteString(Name);
-      }
       if (TotalFiles != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteInt32(TotalFiles);
       }
       if (TotalCommits != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(24);
         output.WriteInt32(TotalCommits);
       }
       if (TotalAuthors != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(32);
         output.WriteInt32(TotalAuthors);
       }
       if (age_ != null) {
-        output.WriteRawTag(50);
+        output.WriteRawTag(42);
         output.WriteMessage(Age);
       }
       if (lines_ != null) {
-        output.WriteRawTag(58);
+        output.WriteRawTag(50);
         output.WriteMessage(Lines);
       }
       if (_unknownFields != null) {
@@ -274,28 +255,24 @@ namespace Legit.Protos.Overview {
         output.WriteRawTag(10);
         output.WriteString(Url);
       }
-      if (Name.Length != 0) {
-        output.WriteRawTag(18);
-        output.WriteString(Name);
-      }
       if (TotalFiles != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteInt32(TotalFiles);
       }
       if (TotalCommits != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(24);
         output.WriteInt32(TotalCommits);
       }
       if (TotalAuthors != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(32);
         output.WriteInt32(TotalAuthors);
       }
       if (age_ != null) {
-        output.WriteRawTag(50);
+        output.WriteRawTag(42);
         output.WriteMessage(Age);
       }
       if (lines_ != null) {
-        output.WriteRawTag(58);
+        output.WriteRawTag(50);
         output.WriteMessage(Lines);
       }
       if (_unknownFields != null) {
@@ -310,9 +287,6 @@ namespace Legit.Protos.Overview {
       int size = 0;
       if (Url.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Url);
-      }
-      if (Name.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
       }
       if (TotalFiles != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(TotalFiles);
@@ -343,9 +317,6 @@ namespace Legit.Protos.Overview {
       }
       if (other.Url.Length != 0) {
         Url = other.Url;
-      }
-      if (other.Name.Length != 0) {
-        Name = other.Name;
       }
       if (other.TotalFiles != 0) {
         TotalFiles = other.TotalFiles;
@@ -387,30 +358,26 @@ namespace Legit.Protos.Overview {
             Url = input.ReadString();
             break;
           }
-          case 18: {
-            Name = input.ReadString();
-            break;
-          }
-          case 24: {
+          case 16: {
             TotalFiles = input.ReadInt32();
             break;
           }
-          case 32: {
+          case 24: {
             TotalCommits = input.ReadInt32();
             break;
           }
-          case 40: {
+          case 32: {
             TotalAuthors = input.ReadInt32();
             break;
           }
-          case 50: {
+          case 42: {
             if (age_ == null) {
               Age = new global::Legit.Protos.Overview.Age();
             }
             input.ReadMessage(Age);
             break;
           }
-          case 58: {
+          case 50: {
             if (lines_ == null) {
               Lines = new global::Legit.Protos.Overview.Lines();
             }
@@ -436,30 +403,26 @@ namespace Legit.Protos.Overview {
             Url = input.ReadString();
             break;
           }
-          case 18: {
-            Name = input.ReadString();
-            break;
-          }
-          case 24: {
+          case 16: {
             TotalFiles = input.ReadInt32();
             break;
           }
-          case 32: {
+          case 24: {
             TotalCommits = input.ReadInt32();
             break;
           }
-          case 40: {
+          case 32: {
             TotalAuthors = input.ReadInt32();
             break;
           }
-          case 50: {
+          case 42: {
             if (age_ == null) {
               Age = new global::Legit.Protos.Overview.Age();
             }
             input.ReadMessage(Age);
             break;
           }
-          case 58: {
+          case 50: {
             if (lines_ == null) {
               Lines = new global::Legit.Protos.Overview.Lines();
             }

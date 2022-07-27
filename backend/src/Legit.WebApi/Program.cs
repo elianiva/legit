@@ -1,6 +1,7 @@
 using Google.Protobuf;
 
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -13,7 +14,13 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// serialise protobuf to json
+builder.Services.AddCors(corsBuilder =>
+{
+    CorsPolicy policy = new CorsPolicyBuilder().AllowAnyHeader().WithMethods("GET", "POST").WithOrigins("http://localhost:5173").Build();
+    corsBuilder.AddPolicy("frontend", policy);
+});
+
+// serialise protobuf generated class to json
 builder.Services.AddSingleton<JsonFormatter>(sp =>
 {
     JsonFormatter.Settings formatterSettings = new JsonFormatter.Settings(false);
@@ -34,6 +41,8 @@ if (app.Environment.IsProduction())
 {
     app.UseHttpsRedirection();
 }
+
+app.UseCors("frontend");
 
 app.UseAuthorization();
 
