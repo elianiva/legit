@@ -14,13 +14,13 @@ export const globalTheme = {
 				backgroundImage: "/assets/background.jpg",
 				backgroundPosition: "bottom",
 				backgroundSize: "cover",
-				backdropFilter: "blur(2rem)",
+				backdropFilter: "blur(2.5rem)",
 			} as StyleObjectOrFn,
 			"body::before": {
 				content: '""',
 				position: "absolute",
 				inset: 0,
-				backgroundColor: "rgba(255, 255, 255, 0.625)",
+				backgroundColor: "rgba(255, 255, 255, 0.8)",
 			} as StyleObjectOrFn,
 			"#root": {
 				position: "relative",

@@ -6,7 +6,7 @@ export function SideNav() {
 	const location = useLocation();
 
 	return (
-		<Box bgColor="whiteAlpha.600" h="full" w="full">
+		<Box bgColor="whiteAlpha.700" border="solid gray.800" borderRightWidth="1px" h="full" w="full">
 			<Stack h={120} p={6} w="full">
 				<span>Legit</span>
 				<span>teknologi-umum/blog</span>
@@ -18,7 +18,7 @@ export function SideNav() {
 						<Flex
 							key={item.url}
 							_hover={{
-								bgColor: "blackAlpha.50",
+								bgGradient: "linear(to-r, blackAlpha.50, transparent)",
 								transition: "background-color ease-out 0.2s",
 							}}
 							as={Link}
@@ -27,7 +27,7 @@ export function SideNav() {
 							gap={4}
 							position="relative"
 							px={6}
-							py={2}
+							py={3}
 							sx={{
 								"&::before": {
 									content: '""',
