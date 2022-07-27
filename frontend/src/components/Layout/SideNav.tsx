@@ -1,5 +1,6 @@
 import { Box, HStack, Icon, Stack, Text } from "@chakra-ui/react";
 import { Link, useLocation } from "react-router-dom";
+import { ReactComponent as LogoIcon } from "~/icons/ic_logo.svg";
 import { navLinkGroups as navLinkItems } from "./nav-data";
 
 export function SideNav() {
@@ -7,9 +8,8 @@ export function SideNav() {
 
 	return (
 		<Box bgColor="whiteAlpha.700" border="solid gray.800" borderRightWidth="1px" h="full" w="full">
-			<Stack h={120} p={6} w="full">
-				<span>Legit</span>
-				<span>teknologi-umum/blog</span>
+			<Stack align="center" h={120} justify="center" p={6} spacing={4} w="full">
+				<Icon as={LogoIcon} h={8} w="full" />
 			</Stack>
 			<Stack h="full" spacing={4} w="full">
 				{navLinkItems.map((item) => {
@@ -32,11 +32,11 @@ export function SideNav() {
 								"&::before": {
 									content: '""',
 									position: "absolute",
-									left: 0,
+									right: 0,
 									top: 2,
 									bottom: 2,
 									width: 1,
-									rounded: "0 1rem 1rem 0",
+									rounded: "1rem 0 0 1rem",
 									bgColor: isActive ? "blue.500" : "transparent",
 									transition: "background-color ease-out 0.2s",
 								},
