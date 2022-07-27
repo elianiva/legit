@@ -1,0 +1,27 @@
+syntax = "proto3";
+package legit;
+
+option csharp_namespace = "Legit.Protos.Overview";
+
+message GitOverviewResponse {
+    string url = 1;
+    string name = 2;
+    int32 total_files = 3;
+    int32 total_commits = 4;
+    int32 total_authors = 5;
+    Age age = 6;
+    Lines lines = 7;
+}
+
+message Age {
+    int32 days = 1;
+    int32 hours = 2;
+    int32 minutes = 3;
+    int32 seconds = 4;
+}
+
+message Lines {
+    int32 total = 1;
+    int32 added = 2;
+    int32 deleted = 3;
+}

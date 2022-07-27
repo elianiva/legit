@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.Protobuf" Version="3.21.4" />
+  </ItemGroup>
+
+  <Target Name="GenerateProto" Label="Build SQLite with ICU support">
+      <Exec WorkingDirectory="../../../proto" Command="protoc --csharp_out=../backend/src/Legit.Protos --csharp_opt=base_namespace=Legit.Protos *.proto" />
+  </Target>
+
+</Project>

@@ -7,6 +7,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C26A4760-9AF
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Legit.WebApi", "src\Legit.WebApi\Legit.WebApi.csproj", "{88523743-142C-4706-B466-A85E7B29F20A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Legit.Protos", "src\Legit.Protos\Legit.Protos.csproj", "{5B71EEE9-FE3A-4A23-A0E0-FCD63CD5C010}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,8 +22,13 @@ Global
 		{88523743-142C-4706-B466-A85E7B29F20A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88523743-142C-4706-B466-A85E7B29F20A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88523743-142C-4706-B466-A85E7B29F20A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B71EEE9-FE3A-4A23-A0E0-FCD63CD5C010}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B71EEE9-FE3A-4A23-A0E0-FCD63CD5C010}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B71EEE9-FE3A-4A23-A0E0-FCD63CD5C010}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B71EEE9-FE3A-4A23-A0E0-FCD63CD5C010}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{88523743-142C-4706-B466-A85E7B29F20A} = {C26A4760-9AF0-480E-949E-C01DC10C029B}
+		{5B71EEE9-FE3A-4A23-A0E0-FCD63CD5C010} = {C26A4760-9AF0-480E-949E-C01DC10C029B}
 	EndGlobalSection
 EndGlobal

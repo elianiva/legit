@@ -1,0 +1,6 @@
+syntax = "proto3";
+package legit;
+
+option csharp_namespace = "Legit.Protos.Common";
+
+message EmptyRequest {}

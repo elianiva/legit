@@ -1,19 +1,31 @@
 {
-	"folders": [
-		{
-			"path": ".",
-			"name": "root"
-		},
-		{
-			"path": "backend",
-			"name": "dotnet-backend"
-		},
-		{
-			"path": "frontend",
-			"name": "react-frontend"
-		},
-	],
-	"settings": {
-		"typescript.tsdk": "react-frontend/node_modules/typescript/lib"
-	}
+  "folders": [
+    {
+      "path": ".",
+      "name": "root"
+    },
+    {
+      "path": "backend",
+      "name": "backend"
+    },
+    {
+      "path": "frontend",
+      "name": "frontend"
+    },
+    {
+      "path": "proto",
+      "name": "proto"
+    },
+    {
+      "path": "backend/src/Legit.WebApi",
+      "name": "Legit.WebApi"
+    },
+    {
+      "path": "backend/src/Legit.Protos",
+      "name": "Legit.Protos"
+    }
+  ],
+  "settings": {
+    "typescript.tsdk": "react-frontend/node_modules/typescript/lib"
+  }
 }
