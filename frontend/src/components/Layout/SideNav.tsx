@@ -27,7 +27,7 @@ export function SideNav() {
 							position="relative"
 							px={6}
 							py={3}
-							spacing={2}
+							spacing={4}
 							sx={{
 								"&::before": {
 									content: '""',
@@ -46,7 +46,7 @@ export function SideNav() {
 							}}
 							to={item.url}
 						>
-							<Icon as={item.icon} color={isActive ? "blue.500" : "gray.500"} />
+							<Icon as={item.icon} color={isActive ? "blue.500" : "gray.500"} h={6} w={6} />
 							<Text
 								color={isActive ? "blue.500" : "gray.500"}
 								fontWeight={isActive ? "semibold" : "normal"}

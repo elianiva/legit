@@ -1,18 +1,4 @@
-import {
-	Box,
-	Grid,
-	Heading,
-	Stat,
-	StatArrow,
-	StatHelpText,
-	StatLabel,
-	StatNumber,
-	Table,
-	Tbody,
-	Td,
-	Text,
-	Tr,
-} from "@chakra-ui/react";
+import { Box, Grid, Heading, Stat, StatLabel, StatNumber, Table, Tbody, Td, Text, Tr } from "@chakra-ui/react";
 import { GlassCard } from "~/components/GlassCard";
 import { localiseNumber } from "~/utils/localise";
 import { useOverview } from "../services/overview";
@@ -26,7 +12,7 @@ export function DashboardRoute() {
 	const { url: repositoryUrl, text: repositoryName } = parseGitUrl(overview.url);
 
 	return (
-		<Grid gap={6} gridTemplateColumns="repeat(4, 1fr)" p={8}>
+		<Grid gap={6} h="full" p={6} templateColumns="repeat(4, 1fr)" templateRows="1rem 1.625fr repeat(2, 1fr)">
 			<Box>
 				<Heading fontWeight="semibold" size="md">
 					Dashboard
@@ -60,54 +46,42 @@ export function DashboardRoute() {
 						<Tr>
 							<Td>Total Files</Td>
 							<Td>:</Td>
-							<Td>{overview.totalFiles}</Td>
+							<Td>
+								{overview.totalFiles} {overview.totalAuthors > 0 ? "Files" : "File"}
+							</Td>
 						</Tr>
 						<Tr>
 							<Td>Total Authors</Td>
 							<Td>:</Td>
-							<Td>{overview.totalAuthors}</Td>
+							<Td>
+								{overview.totalAuthors} {overview.totalAuthors > 0 ? "People" : "Person"}
+							</Td>
 						</Tr>
 					</Tbody>
 				</Table>
 			</GlassCard>
-			<GlassCard gridColumn="1/2">
+			<GlassCard gridColumn="1/3" gridRow="3/4">
 				<Stat>
 					<StatLabel color="grey">Lines in Total</StatLabel>
 					<StatNumber>{localiseNumber(overview.lines?.total ?? 0)}</StatNumber>
-					<StatHelpText mb={0}>
-						<StatArrow type="decrease" />
-						3.36%
-					</StatHelpText>
 				</Stat>
 			</GlassCard>
-			<GlassCard gridColumn="2/3">
+			<GlassCard gridColumn="3/5" gridRow="3/4">
 				<Stat>
 					<StatLabel color="grey">Lines Added</StatLabel>
 					<StatNumber>{localiseNumber(overview.lines?.added ?? 0)}</StatNumber>
-					<StatHelpText>
-						<StatArrow type="increase" />
-						23.36%
-					</StatHelpText>
 				</Stat>
 			</GlassCard>
-			<GlassCard gridColumn="3/4">
+			<GlassCard gridColumn="1/3" gridRow="4/5">
 				<Stat>
 					<StatLabel color="grey">Lines Deleted</StatLabel>
 					<StatNumber>{localiseNumber(overview.lines?.deleted ?? 0)}</StatNumber>
-					<StatHelpText>
-						<StatArrow type="decrease" />
-						2.36%
-					</StatHelpText>
 				</Stat>
 			</GlassCard>
-			<GlassCard gridColumn="4/5">
+			<GlassCard gridColumn="3/5" gridRow="4/5">
 				<Stat>
 					<StatLabel color="grey">Total of Commits</StatLabel>
 					<StatNumber>{localiseNumber(overview.totalCommits)}</StatNumber>
-					<StatHelpText>
-						<StatArrow type="increase" />
-						2.36%
-					</StatHelpText>
 				</Stat>
 			</GlassCard>
 		</Grid>
