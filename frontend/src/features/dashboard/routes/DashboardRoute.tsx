@@ -1,6 +1,7 @@
 import { Box, Grid, Heading, Stat, StatLabel, StatNumber, Table, Tbody, Td, Text, Tr } from "@chakra-ui/react";
 import { GlassCard } from "~/components/GlassCard";
 import { localiseNumber } from "~/utils/localise";
+import { LineChart } from "../components/Chart";
 import { useOverview } from "../services/overview";
 import { humaniseAge } from "../utils/humanise-age";
 import { parseGitUrl } from "../utils/parse-git-url";
@@ -60,29 +61,77 @@ export function DashboardRoute() {
 					</Tbody>
 				</Table>
 			</GlassCard>
-			<GlassCard gridColumn="1/3" gridRow="3/4">
-				<Stat>
+			<GlassCard gridColumn="1/3" gridRow="3/4" position="relative">
+				<Stat left={4} position="absolute" top={4}>
 					<StatLabel color="grey">Lines in Total</StatLabel>
 					<StatNumber>{localiseNumber(overview.lines?.total ?? 0)}</StatNumber>
 				</Stat>
+				<Box
+					bottom={4}
+					left={4}
+					overflow="hidden"
+					position="absolute"
+					right={4}
+					rounded="lg"
+					sx={{ "&": { maskImage: "linear-gradient(to right, transparent 20%, black 75%)" } }}
+					top={4}
+				>
+					<LineChart />
+				</Box>
 			</GlassCard>
-			<GlassCard gridColumn="3/5" gridRow="3/4">
+			<GlassCard gridColumn="3/5" gridRow="3/4" position="relative">
 				<Stat>
 					<StatLabel color="grey">Lines Added</StatLabel>
 					<StatNumber>{localiseNumber(overview.lines?.added ?? 0)}</StatNumber>
 				</Stat>
+				<Box
+					bottom={4}
+					left={4}
+					overflow="hidden"
+					position="absolute"
+					right={4}
+					rounded="lg"
+					sx={{ "&": { maskImage: "linear-gradient(to right, transparent 20%, black 75%)" } }}
+					top={4}
+				>
+					<LineChart />
+				</Box>
 			</GlassCard>
-			<GlassCard gridColumn="1/3" gridRow="4/5">
+			<GlassCard gridColumn="1/3" gridRow="4/5" position="relative">
 				<Stat>
 					<StatLabel color="grey">Lines Deleted</StatLabel>
 					<StatNumber>{localiseNumber(overview.lines?.deleted ?? 0)}</StatNumber>
 				</Stat>
+				<Box
+					bottom={4}
+					left={4}
+					overflow="hidden"
+					position="absolute"
+					right={4}
+					rounded="lg"
+					sx={{ "&": { maskImage: "linear-gradient(to right, transparent 20%, black 75%)" } }}
+					top={4}
+				>
+					<LineChart />
+				</Box>
 			</GlassCard>
-			<GlassCard gridColumn="3/5" gridRow="4/5">
+			<GlassCard gridColumn="3/5" gridRow="4/5" position="relative">
 				<Stat>
 					<StatLabel color="grey">Total of Commits</StatLabel>
 					<StatNumber>{localiseNumber(overview.totalCommits)}</StatNumber>
 				</Stat>
+				<Box
+					bottom={4}
+					left={4}
+					overflow="hidden"
+					position="absolute"
+					right={4}
+					rounded="lg"
+					sx={{ "&": { maskImage: "linear-gradient(to right, transparent 20%, black 75%)" } }}
+					top={4}
+				>
+					<LineChart />
+				</Box>
 			</GlassCard>
 		</Grid>
 	);
