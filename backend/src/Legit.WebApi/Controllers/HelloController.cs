@@ -12,9 +12,9 @@ namespace Legit.WebApi.Controllers;
 [ApiController]
 public class HelloController : ControllerBase
 {
-    [HttpGet]
-    public IActionResult Index()
-    {
-        return Ok("Hello world!");
-    }
+	[HttpGet]
+	public IActionResult Index()
+	{
+		return Ok("Hello world!");
+	}
 }

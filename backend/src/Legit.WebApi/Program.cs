@@ -1,25 +1,26 @@
+using System.Reactive.Subjects;
+
 using Google.Protobuf;
 
+using Legit.DomainServices;
+using Legit.DomainServices.Registration;
+using Legit.GitClient;
+using Legit.RepositoryDALs;
+
 using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Cors.Infrastructure;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-
-using Legit.GitClient;
-using Legit.DomainServices;
-using Legit.RepositoryDALs;
-using System.Reactive.Subjects;
-using Legit.DomainServices.Registration;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add configuration providers
 builder.Configuration
-    .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-    .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", optional: true, reloadOnChange: true)
-    .AddKeyPerFile("/run/secrets", optional: true, reloadOnChange: true)
-    .AddEnvironmentVariables("ASPNETCORE_");
+	.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+	.AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", optional: true, reloadOnChange: true)
+	.AddKeyPerFile("/run/secrets", optional: true, reloadOnChange: true)
+	.AddEnvironmentVariables("ASPNETCORE_");
 
 // Configure options
 builder.Services.Configure<LegitOptions>(builder.Configuration.GetSection("LegitOptions"));
@@ -27,9 +28,9 @@ builder.Services.Configure<LegitOptions>(builder.Configuration.GetSection("Legit
 // serialise protobuf generated class to json
 builder.Services.AddSingleton<JsonFormatter>(sp =>
 {
-    JsonFormatter.Settings formatterSettings = new JsonFormatter.Settings(false);
-    JsonFormatter formatter = new JsonFormatter(formatterSettings);
-    return formatter;
+	JsonFormatter.Settings formatterSettings = new JsonFormatter.Settings(false);
+	JsonFormatter formatter = new JsonFormatter(formatterSettings);
+	return formatter;
 });
 
 // subject for clone progress events
@@ -47,8 +48,8 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddCors(corsBuilder =>
 {
-    CorsPolicy policy = new CorsPolicyBuilder().AllowAnyHeader().WithMethods("GET", "POST").WithOrigins("http://localhost:5173").Build();
-    corsBuilder.AddPolicy("frontend", policy);
+	CorsPolicy policy = new CorsPolicyBuilder().AllowAnyHeader().WithMethods("GET", "POST").WithOrigins("http://localhost:5173").Build();
+	corsBuilder.AddPolicy("frontend", policy);
 });
 
 var app = builder.Build();
@@ -56,13 +57,13 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+	app.UseSwagger();
+	app.UseSwaggerUI();
 }
 
 if (app.Environment.IsProduction())
 {
-    app.UseHttpsRedirection();
+	app.UseHttpsRedirection();
 }
 
 app.UseCors("frontend");
