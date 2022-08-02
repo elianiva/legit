@@ -1,13 +1,44 @@
 using Google.Protobuf;
 
 using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
+using Legit.GitClient;
+using Legit.DomainServices;
+using Legit.RepositoryDALs;
+using System.Reactive.Subjects;
+using Legit.DomainServices.Registration;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Add configuration providers
+builder.Configuration
+    .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+    .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", optional: true, reloadOnChange: true)
+    .AddKeyPerFile("/run/secrets", optional: true, reloadOnChange: true)
+    .AddEnvironmentVariables("ASPNETCORE_");
+
+// Configure options
+builder.Services.Configure<LegitOptions>(builder.Configuration.GetSection("LegitOptions"));
+
+// serialise protobuf generated class to json
+builder.Services.AddSingleton<JsonFormatter>(sp =>
+{
+    JsonFormatter.Settings formatterSettings = new JsonFormatter.Settings(false);
+    JsonFormatter formatter = new JsonFormatter(formatterSettings);
+    return formatter;
+});
+
+// subject for clone progress events
+builder.Services.AddSingleton<Subject<ProgressEvent>>();
+
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddMemoryCache();
+builder.Services.AddGitClient();
+builder.Services.AddDomainServices();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -18,14 +49,6 @@ builder.Services.AddCors(corsBuilder =>
 {
     CorsPolicy policy = new CorsPolicyBuilder().AllowAnyHeader().WithMethods("GET", "POST").WithOrigins("http://localhost:5173").Build();
     corsBuilder.AddPolicy("frontend", policy);
-});
-
-// serialise protobuf generated class to json
-builder.Services.AddSingleton<JsonFormatter>(sp =>
-{
-    JsonFormatter.Settings formatterSettings = new JsonFormatter.Settings(false);
-    JsonFormatter formatter = new JsonFormatter(formatterSettings);
-    return formatter;
 });
 
 var app = builder.Build();
@@ -46,6 +69,6 @@ app.UseCors("frontend");
 
 app.UseAuthorization();
 
-app.MapControllers();
+app.MapDefaultControllerRoute();
 
 app.Run();

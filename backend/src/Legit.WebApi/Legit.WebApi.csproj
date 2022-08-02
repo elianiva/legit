@@ -10,10 +10,14 @@
     <PackageReference Include="Google.Protobuf" Version="3.21.4" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.7" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    <PackageReference Include="System.Reactive" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="../Legit.Protos/Legit.Protos.csproj" />
+    <ProjectReference Include="../Legit.DomainServices/Legit.DomainServices.csproj" />
+    <ProjectReference Include="../Legit.GitClient/Legit.GitClient.csproj" />
+    <ProjectReference Include="../Legit.RepositoryDALs/Legit.RepositoryDALs.csproj" />
   </ItemGroup>
 
 </Project>

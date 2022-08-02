@@ -1,0 +1,10 @@
+syntax = "proto3";
+package legit;
+
+option csharp_namespace = "Legit.Protos.Registration";
+
+message RegistrationRequest { string url = 1; }
+
+message RegistrationResponse { string cloneId = 1; }
+
+message CloneProgressRequest { string cloneId = 1; }

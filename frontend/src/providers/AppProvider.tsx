@@ -14,8 +14,8 @@ const queryClient = new QueryClient({
 			useErrorBoundary: true,
 			queryFn: async (ctx) => {
 				const [url] = ctx.queryKey;
-				const response = await http.get(url as string);
-				return response.json();
+				const response = await http(url as string, { method: "get" });
+				return response;
 			},
 		},
 	},

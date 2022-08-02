@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 import { SuspenseBoundary } from "../SuspenseBoundary";
 import { SideNav } from "./SideNav";
 
-export function Layout() {
+export function AppLayout() {
 	return (
 		<Grid h="full" templateColumns="16rem 1fr">
 			<SideNav />

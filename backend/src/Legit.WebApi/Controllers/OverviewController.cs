@@ -22,6 +22,7 @@ public class OverviewController : ControllerBase
         _formatter = formatter;
     }
 
+    [HttpGet]
     public IActionResult OverviewAsync()
     {
         GitOverviewResponse overview = new GitOverviewResponse

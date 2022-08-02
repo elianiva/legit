@@ -1,5 +1,5 @@
 import { Navigate, useRoutes } from "react-router-dom";
-import { Layout } from "~/components/Layout/Layout";
+import { AppLayout } from "~/components/AppLayout";
 import { lazyImport } from "~/utils";
 
 const { DashboardRoutes } = lazyImport(() => import("~/features/dashboard"), "DashboardRoutes");
@@ -7,8 +7,8 @@ const { DashboardRoutes } = lazyImport(() => import("~/features/dashboard"), "Da
 export function AppRoutes() {
 	return useRoutes([
 		{
-			path: "*",
-			element: <Layout />,
+			path: "/:owner/:repo/*",
+			element: <AppLayout />,
 			children: [
 				{
 					path: "dashboard/*",
@@ -31,6 +31,10 @@ export function AppRoutes() {
 					element: <Navigate to="/dashboard" />,
 				},
 			],
+		},
+		{
+			path: "*",
+			element: <Navigate replace to="/" />,
 		},
 	]);
 }

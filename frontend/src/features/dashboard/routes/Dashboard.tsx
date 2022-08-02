@@ -6,7 +6,7 @@ import { useOverview } from "../services/overview";
 import { humaniseAge } from "../utils/humanise-age";
 import { parseGitUrl } from "../utils/parse-git-url";
 
-export function DashboardRoute() {
+export function Dashboard() {
 	const { data: overview } = useOverview();
 	if (overview === undefined) return null;
 

@@ -6,7 +6,7 @@
     },
     {
       "path": "backend",
-      "name": "backend"
+      "name": "backend-root"
     },
     {
       "path": "frontend",
@@ -23,6 +23,18 @@
     {
       "path": "backend/src/Legit.Protos",
       "name": "Legit.Protos"
+    },
+    {
+      "path": "backend/src/Legit.DomainServices",
+      "name": "Legit.DomainServices"
+    },
+    {
+      "path": "backend/src/Legit.RepositoryDALs",
+      "name": "Legit.RepositoryDALs"
+    },
+    {
+      "path": "backend/src/Legit.GitClient",
+      "name": "Legit.GitClient"
     }
   ],
   "settings": {
