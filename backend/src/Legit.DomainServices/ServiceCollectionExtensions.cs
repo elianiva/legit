@@ -1,5 +1,5 @@
 using Legit.DomainServices.Overview;
-using Legit.DomainServices.Registration;
+using Legit.DomainServices.RegistrationDomain;
 
 using Microsoft.Extensions.DependencyInjection;
 

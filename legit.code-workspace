@@ -25,6 +25,10 @@
       "name": "Legit.Protos"
     },
     {
+      "path": "backend/src/Legit.DomainModels",
+      "name": "Legit.DomainModels"
+    },
+    {
       "path": "backend/src/Legit.DomainServices",
       "name": "Legit.DomainServices"
     },

@@ -12,13 +12,7 @@ export function Register() {
 	function handleCloneRepository() {
 		cloneRepository(
 			{ url: repositoryUrl },
-			{
-				onSuccess: (cloneId) => {
-					navigate(`/registration/progress/${cloneId}`, {
-						state: { url: repositoryUrl },
-					});
-				},
-			}
+			{ onSuccess: (cloneId) => navigate(`/registration/progress/${cloneId}`) }
 		);
 	}
 

@@ -25,7 +25,7 @@ public static class HttpContextSSEExtensions
 
 		if (!string.IsNullOrWhiteSpace(type))
 		{
-			await context.Response.WriteAsync($"type: {type}\n");
+			await context.Response.WriteAsync($"event: {type}\n");
 		}
 
 		List<string> normalisedData = data switch

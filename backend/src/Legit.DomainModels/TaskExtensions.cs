@@ -2,7 +2,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Legit.DomainServices.Utilities;
+namespace Legit.DomainModels;
 
 /// <summary>
 /// Utility functions for dealing with <see cref="Task"/> instances.

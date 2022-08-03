@@ -2,8 +2,8 @@ using System.Reactive.Subjects;
 
 using Google.Protobuf;
 
+using Legit.DomainModels.RegistrationDomain;
 using Legit.DomainServices;
-using Legit.DomainServices.Registration;
 using Legit.GitClient;
 using Legit.RepositoryDALs;
 
@@ -38,6 +38,7 @@ builder.Services.AddSingleton<Subject<ProgressEvent>>();
 
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddMemoryCache();
+builder.Services.AddRepositoryDALs();
 builder.Services.AddGitClient();
 builder.Services.AddDomainServices();
 

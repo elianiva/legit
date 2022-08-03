@@ -9,15 +9,14 @@ using System.Threading.Tasks;
 
 using Google.Protobuf;
 
-using Legit.DomainServices.Registration;
+using Legit.DomainModels.RegistrationDomain;
+using Legit.DomainServices.RegistrationDomain;
 using Legit.Protos.Registration;
 using Legit.RepositoryDALs;
 
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
-
-using NuGet.Protocol;
 
 namespace Legit.WebApi.Controllers;
 
@@ -52,7 +51,7 @@ public class RegistrationController : ControllerBase
 	{
 		Uri url = new(request.Url);
 		string baseDirectory = Path.Combine(Environment.CurrentDirectory, _cloneDirectory);
-		string cloneId = _registrationService.AddGitRepository(
+		string cloneId = _registrationService.RegisterGitRepository(
 			url,
 			baseDirectory,
 			onProgress: _progressSubject.OnNext
@@ -65,21 +64,16 @@ public class RegistrationController : ControllerBase
 	[HttpGet("clone-progress/{cloneId}")]
 	public async Task CloneProgress(string cloneId, CancellationToken cancellationToken)
 	{
-		HttpContext? context = _httpContextAccessor.HttpContext;
-		if (context is null)
-		{
-			return;
-		}
+		CancellationTokenSource cancellationTokenSource = new();
+		await HttpContext.InitializeSseAsync();
 
-		await context.InitializeSseAsync();
-
-		List<string> pastCloneProgress = _registrationService.GetCloneProgress(cloneId);
+		IEnumerable<string> pastCloneProgress = _registrationService.GetCloneProgress(cloneId);
 		string lastEventId = Request.Headers["Last-Event-ID"];
 		int eventId;
 		bool hasValidId = int.TryParse(lastEventId, out eventId);
 		if (pastCloneProgress.Count() > 0 && hasValidId)
 		{
-			await context.SendSseEventAsync(lastEventId, "data", pastCloneProgress.Skip(eventId));
+			await HttpContext.SendSseEventAsync(lastEventId, "data", pastCloneProgress.Skip(eventId));
 		}
 
 		// honestly, I don't know if this is the right way to do it
@@ -88,15 +82,19 @@ public class RegistrationController : ControllerBase
 			.Where(@event => @event.CloneId == cloneId)
 			.Select(@event =>
 			{
-				Console.WriteLine(@event);
-				if (@event.EventId is not null && @event.Message is not null)
+				if (@event.EventType == ProgressEventType.DATA)
 				{
-					return Observable.FromAsync(() => context.SendSseEventAsync(@event.EventId, "data", @event.Message));
+					return Observable.FromAsync(() => HttpContext.SendSseEventAsync(@event.EventId, @event.EventType.ToString().ToLower(), @event.Message));
 				}
 
-				return Observable.FromAsync(() => context.SendSseEventAsync("", "close", ""));
+				return Observable.FromAsync(async () => {
+					await HttpContext.SendSseEventAsync("", "close", "");
+					cancellationTokenSource.Cancel();
+				});
 			})
 			.Concat()
 			.Subscribe();
+		
+		cancellationTokenSource.Token.WaitHandle.WaitOne();
 	}
 }

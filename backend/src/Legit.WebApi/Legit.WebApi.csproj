@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="../Legit.Protos/Legit.Protos.csproj" />
+    <ProjectReference Include="../Legit.DomainModels/Legit.DomainModels.csproj" />
     <ProjectReference Include="../Legit.DomainServices/Legit.DomainServices.csproj" />
     <ProjectReference Include="../Legit.GitClient/Legit.GitClient.csproj" />
     <ProjectReference Include="../Legit.RepositoryDALs/Legit.RepositoryDALs.csproj" />

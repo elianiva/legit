@@ -1,12 +1,14 @@
 using System;
 using System.IO;
 
+using Legit.DomainModels;
+
 using LibGit2Sharp;
 using LibGit2Sharp.Handlers;
 
 namespace Legit.GitClient;
 
-public class Git
+public class Git : IGitClient
 {
 	/// <summary>
 	/// Clones a repository to a path using this format:
@@ -15,7 +17,7 @@ public class Git
 	/// <param name="url">The repository URL</param>
 	/// <param name="baseDir">The base directory of the clone target</param>
 	/// <returns>The cloned repository path</returns>
-	public string CloneRepository(Uri url, string baseDir, ProgressHandler onProgress, Action onComplete)
+	public string CloneRepository(Uri url, string baseDir, Action<string> onProgress, Action onCompleted)
 	{
 		// example url: https://github.com/teknologi-umum/blog
 		string[] segments = url.AbsolutePath.Split("/");
@@ -25,9 +27,12 @@ public class Git
 
 		return Repository.Clone(url.ToString(), cloneTarget, new CloneOptions
 		{
-			OnProgress = onProgress,
-			OnTransferProgress = (progress) => onProgress.Invoke($"Cloning... ({progress.ReceivedObjects}/{progress.TotalObjects})"),
-			RepositoryOperationCompleted = (_) => onComplete.Invoke()
+			OnProgress = (progress) =>
+			{
+				onProgress.Invoke(progress);
+				return true;
+			},
+			RepositoryOperationCompleted = (_) => onCompleted.Invoke()
 		});
 	}
 }

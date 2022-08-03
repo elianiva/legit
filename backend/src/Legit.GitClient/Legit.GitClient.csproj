@@ -11,4 +11,8 @@
     <PackageReference Include="Microsoft.Extensions.Options" Version="6.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="../Legit.DomainModels/Legit.DomainModels.csproj" />
+  </ItemGroup>
+
 </Project>
