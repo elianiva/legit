@@ -29,6 +29,10 @@
       "name": "Legit.DomainModels"
     },
     {
+      "path": "backend/tests/Legit.DomainModels.Tests",
+      "name": "Legit.DomainModels.Tests"
+    },
+    {
       "path": "backend/src/Legit.DomainServices",
       "name": "Legit.DomainServices"
     },

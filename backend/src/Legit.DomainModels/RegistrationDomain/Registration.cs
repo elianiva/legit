@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -28,17 +26,17 @@ public class Registration
 		Action cloneRepository = () => _client.CloneRepository(
 			url,
 			baseDir,
-			onCompleted: () => onProgress.Invoke(new ProgressEvent(
-				EventType: ProgressEventType.CLOSE,
-				CloneId: cloneId,
-				EventId: "",
-				Message: ""
-			)),
 			onProgress: (progress) => onProgress.Invoke(new ProgressEvent(
 				EventType: ProgressEventType.DATA,
 				CloneId: cloneId,
 				EventId: "",
 				Message: progress
+			)),
+			onCompleted: () => onProgress.Invoke(new ProgressEvent(
+				EventType: ProgressEventType.CLOSE,
+				CloneId: cloneId,
+				EventId: "",
+				Message: ""
 			)));
 		Task.Run(cloneRepository).Ignore();
 
