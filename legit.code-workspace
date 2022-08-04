@@ -37,6 +37,10 @@
       "name": "Legit.DomainServices"
     },
     {
+      "path": "backend/tests/Legit.DomainServices.Tests",
+      "name": "Legit.DomainServices.Tests"
+    },
+    {
       "path": "backend/src/Legit.RepositoryDALs",
       "name": "Legit.RepositoryDALs"
     },

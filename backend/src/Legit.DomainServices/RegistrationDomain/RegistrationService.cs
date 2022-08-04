@@ -17,6 +17,7 @@ public class RegistrationService
 
 	public RegistrationService(IProgressListRepository repository, IGitClient gitClient)
 	{
+		// FIXME: use DI
 		_registration = new Registration(gitClient);
 		_repository = repository;
 	}
