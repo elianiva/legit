@@ -5,8 +5,6 @@ using System.Linq;
 using Legit.DomainModels;
 using Legit.DomainModels.RegistrationDomain;
 
-using Microsoft.Extensions.Caching.Memory;
-
 namespace Legit.DomainServices.RegistrationDomain;
 
 /// <summary>
@@ -16,7 +14,6 @@ public class RegistrationService
 {
 	private readonly Registration _registration;
 	private readonly IProgressListRepository _repository;
-	private readonly MemoryCacheEntryOptions _cacheOptions = new MemoryCacheEntryOptions().SetAbsoluteExpiration(TimeSpan.FromHours(1));
 
 	public RegistrationService(IProgressListRepository repository, IGitClient gitClient)
 	{
