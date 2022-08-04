@@ -15,10 +15,9 @@ public class RegistrationService
 	private readonly Registration _registration;
 	private readonly IProgressListRepository _repository;
 
-	public RegistrationService(IProgressListRepository repository, IGitClient gitClient)
+	public RegistrationService(IProgressListRepository repository, Registration registration)
 	{
-		// FIXME: use DI
-		_registration = new Registration(gitClient);
+		_registration = registration;
 		_repository = repository;
 	}
 
