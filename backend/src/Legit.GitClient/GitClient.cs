@@ -27,6 +27,8 @@ public class Git : IGitClient
 
 		return Repository.Clone(url.ToString(), cloneTarget, new CloneOptions
 		{
+			// we just need the git information to analyse the repository, we don't need the files
+			Checkout = false,
 			OnProgress = (progress) =>
 			{
 				onProgress.Invoke(progress);
