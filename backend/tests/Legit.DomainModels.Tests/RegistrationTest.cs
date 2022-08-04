@@ -22,12 +22,11 @@ public class RegistrationTests
 	public void ReturnsAValidCloneIdWhenRegistering()
 	{
 		Uri repositoryUrl = new(REPOSITORY_URL);
-		string baseDir = "./FooDirectory";
-		_mockGitClient.Setup(client => client.CloneRepository(repositoryUrl, baseDir, It.IsAny<Action<string>>(), It.IsAny<Action>()))
+		_mockGitClient.Setup(client => client.CloneRepository(repositoryUrl, It.IsAny<string>(), It.IsAny<Action<string>>(), It.IsAny<Action>()))
 					  .Callback((Uri uri, string baseDir, Action<string> onProgress, Action onCompleted) => onProgress.Invoke("bruh"));
 
 		Registration registration = new(_mockGitClient.Object);
-		string cloneIdBase64 = registration.AddGitRepository(repositoryUrl, baseDir, onProgress: (progress) => { });
+		string cloneIdBase64 = registration.AddGitRepository(repositoryUrl, "./foo/bar", onProgress: (progress) => { });
 		byte[] cloneIdBytes = Convert.FromBase64String(cloneIdBase64);
 		string cloneId = Encoding.UTF8.GetString(cloneIdBytes);
 
