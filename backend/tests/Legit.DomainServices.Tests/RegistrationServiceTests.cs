@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Moq;
 using FluentAssertions;
 using Xunit;
+using System.Collections.Generic;
 
 namespace Legit.DomainServices.Tests;
 
@@ -65,6 +66,20 @@ public class RegistrationServiceTests
 			if (progress.EventType == ProgressEventType.CLOSE)
 			{
 				progress.EventId.Should().Be(PROGRESS_COUNT.ToString());
+			}
+		});
+	}
+
+	[Fact]
+	public void ShouldCacheTheProgress()
+	{
+		var registrationService = ServiceProvider.GetRequiredService<RegistrationService>();
+		string cloneId = registrationService.RegisterGitRepository(repositoryUrl, "./foo/bar", (progress) =>
+		{
+			if (progress.EventType == ProgressEventType.CLOSE)
+			{
+				IEnumerable<string> cloneProgress = registrationService.GetCloneProgress(progress.CloneId);
+				cloneProgress.Count().Should().Be(PROGRESS_COUNT);
 			}
 		});
 	}
