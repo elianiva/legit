@@ -35,4 +35,9 @@ public class RegistrationService
 		});
 		return cloneId;
 	}
+
+	public IEnumerable<GitRepository> GetGitRepositories(string baseDir)
+	{
+		return _registration.GetGitRepositories(baseDir);
+	}
 }

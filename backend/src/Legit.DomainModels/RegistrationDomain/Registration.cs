@@ -1,4 +1,7 @@
 using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -41,6 +44,17 @@ public class Registration
 		Task.Run(cloneRepository).Ignore();
 
 		return cloneId;
+	}
+
+	public IEnumerable<GitRepository> GetGitRepositories(string baseDir)
+	{
+		IEnumerable<string> authors = Directory.GetDirectories(baseDir).Select(d => d.Split('/').Last());
+		IEnumerable<GitRepository> gitRepositories = authors.SelectMany(author =>
+		{
+			IEnumerable<string> repoNames = Directory.GetDirectories(Path.Join(baseDir, author)).Select(d => d.Split('/').Last().Split('.').First());
+			return repoNames.Select(name => new GitRepository(name, author));
+		});
+		return gitRepositories;
 	}
 
 	// convert repository url to base64 with timestamp prefix as a unique identifier

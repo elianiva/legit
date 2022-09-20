@@ -97,4 +97,10 @@ public class RegistrationController : ControllerBase
 		
 		cancellationTokenSource.Token.WaitHandle.WaitOne();
 	}
+
+	[HttpGet("repositories")]
+	public IEnumerable<GitRepository> GetGitRepositories()
+	{
+		return _registrationService.GetGitRepositories(_cloneDirectory);
+	}
 }
