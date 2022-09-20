@@ -2,9 +2,9 @@ using System;
 using System.IO;
 
 using Legit.DomainModels;
+using Legit.DomainModels.RegistrationDomain;
 
 using LibGit2Sharp;
-using LibGit2Sharp.Handlers;
 
 namespace Legit.GitClient;
 
