@@ -4,3 +4,8 @@ package legit;
 option csharp_namespace = "Legit.Protos.Common";
 
 message EmptyRequest {}
+
+message GitRepository {
+    string name = 1;
+    string author = 2;
+}

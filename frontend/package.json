@@ -31,6 +31,7 @@
 	"devDependencies": {
 		"@babel/core": "^7.18.9",
 		"@iconify-json/fluent": "^1.1.14",
+		"@iconify-json/ph": "^1.1.2",
 		"@nivo/tooltip": "^0.79.0",
 		"@svgr/core": "^6.3.1",
 		"@types/node": "^18.6.1",

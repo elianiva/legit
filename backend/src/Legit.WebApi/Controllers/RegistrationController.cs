@@ -99,8 +99,12 @@ public class RegistrationController : ControllerBase
 	}
 
 	[HttpGet("repositories")]
-	public IEnumerable<GitRepository> GetGitRepositories()
+	public IEnumerable<Protos.Common.GitRepository> GetGitRepositories()
 	{
-		return _registrationService.GetGitRepositories(_cloneDirectory);
+		return _registrationService.GetGitRepositories(_cloneDirectory).Select(r => new Protos.Common.GitRepository
+		{
+			Name = r.Name,
+			Author = r.Author
+		});
 	}
 }
